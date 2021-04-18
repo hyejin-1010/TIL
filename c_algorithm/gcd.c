@@ -16,6 +16,13 @@ int get_gcd(int u, int v) {
     return v;
 }
 
+int gcd_modules(int u, int v) {
+    if (v == 0) {
+        return u;
+    }
+    return gcd_modules(v, u % v);
+}
+
 int main (void) {
     int u, v;
     puts("\n get GCD of two positive interger");
@@ -28,6 +35,7 @@ int main (void) {
         if (u == 0 || v == 0) { // 0이 입력되면 끝낸다.
             break;
         }
-        printf("\n GCD of %d and %d is %d.", u, v, get_gcd(u, v));
+        // printf("\n GCD of %d and %d is %d.", u, v, get_gcd(u, v));
+        printf("\n GCD of %d and %d is %d.", u, v, gcd_modules(u, v));
     }
 }
